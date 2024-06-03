@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 
+from utils import time_it
+
+
 def find_optimal_num_clusters(data, max_clusters=10):
     """
     Find the optimal number of clusters using the Elbow Method.
@@ -66,6 +69,7 @@ def cluster_documents(document_vectors):
 # -----------------------------------------------------------------------------------------
 
 # Function to find the relevant clusters for a query
+@time_it
 def find_relevant_doc_vector_by_clusters(query_vec,document_vectors,cluster_centers, clusters):
     similarity_to_clusters = cosine_similarity(query_vec, cluster_centers)
     relevant_cluster_indices = similarity_to_clusters.argsort()[0][::-1]

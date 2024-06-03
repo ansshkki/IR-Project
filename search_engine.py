@@ -17,7 +17,7 @@ class SearchEngine:
         pass
 
     def google_search_engine(self, dataset_name: str, query: str, num_docs: int = 10000, top_n: int = 2):
-        vectorizer, document_vectors,documents = build_or_load_index(dataset_name, num_docs=num_docs)
+        vectorizer, document_vectors,documents,clusters ,cluster_center = build_or_load_index(dataset_name, num_docs=num_docs)
         
         expanded_query = expand_query(query)
         query_vec = process_query(expanded_query, vectorizer)
@@ -34,7 +34,6 @@ class SearchEngine:
         
         # --------------------------------
         # Optional: Cluster top documents
-        clusters ,cluster_center = cluster_documents(document_vectors)
         relevant_docs_vectors = find_relevant_doc_vector_by_clusters(query_vec,document_vectors,cluster_center,clusters)
         # Search only in relevant clusters
         ranked_indices_after_cluster, similarity_scores_after_cluster = rank_documents(query_vec, relevant_docs_vectors)
@@ -46,7 +45,6 @@ class SearchEngine:
         print('\n')
         # --------------------------------
 
-        
         top_documents = [documents[index] for index in ranked_indices[:top_n]]
         results = [(top_documents[i], similarity_scores[i]) for i in range(top_n)]
         
@@ -58,3 +56,5 @@ class SearchEngine:
             "results": [{"document": doc, "score": score} for doc, score in results],
             # "topics": top_words
         }
+
+

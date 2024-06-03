@@ -146,5 +146,6 @@ env/
 *.swp
 wikir_*
 docs.joblib_*
-docs.joblib_100*
+docs.jolib_100
 docs.joblib_100
+cluster_*
