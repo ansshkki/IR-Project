@@ -1,10 +1,13 @@
 from sklearn.cluster import KMeans
 # Documents Clustering
 # Purpose: Grouping similar documents together to understand the structure of the data and improve retrieval.
-def cluster_documents(document_vectors, num_clusters=10):
+
+def cluster_documents(document_vectors, num_clusters=3):
     kmeans = KMeans(n_clusters=num_clusters)
-    clusters = kmeans.fit_predict(document_vectors)
-    return clusters
+    cluster_labels = kmeans.fit_predict(document_vectors)
+    return cluster_labels
+
+
 # Example function to print cluster details
 def print_clusters(documents, clusters):
     cluster_dict = {}
@@ -13,11 +16,12 @@ def print_clusters(documents, clusters):
             cluster_dict[cluster] = []
         cluster_dict[cluster].append(doc)
     
+    message = ''
     for cluster, docs in cluster_dict.items():
-        print(f"Cluster {cluster}:")
+        message += f"Cluster {cluster}:"
         for doc in docs:
-            print(f" - {doc[:100]}...") 
-
+            message += f" - {doc[:100]}..."
+    return message
 
 
 #  Document clustering is a technique used to group a set of documents into clusters, where documents in the same cluster are more similar to each other than to those in other clusters. This can help in organizing large datasets, improving search results, and discovering patterns or topics within the documents.

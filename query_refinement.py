@@ -21,9 +21,7 @@ def expand_query(query):
 # Query Refinement (Query Formulation Assistance, Query Suggestions)
 # Purpose:
 # Query refinement involves improving or expanding the user's search query to retrieve more relevant documents. The goal is to help the user formulate a better query, which can result in more accurate search results. This can include suggesting alternative queries or expanding the original query with synonyms.
-
 # What it does:
-
 # Synonym Expansion: When a user submits a query, it might be too specific or might not cover all relevant synonyms. By expanding the query with synonyms, you increase the chances of retrieving documents that are relevant but use different terminology.
 
 # Query Suggestions: Based on the initial query, the system can suggest alternative queries that might yield better results. This can be based on popular queries or common modifications.

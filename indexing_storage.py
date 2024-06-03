@@ -4,8 +4,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import ir_datasets
 from preprocessing import preprocess
 
-vectorizer_path = './wikir_en1k_training_100000'
-document_vectors_path = 'wikir_en1k_training.joblib_100000'
+vectorizer_path = './wikir_en1k_training_100'
+document_vectors_path = 'wikir_en1k_training.joblib_100'
 
 def build_or_load_index(dataset_name='cranfield', num_docs=None):
     os.environ['IR_DATASETS_HOME'] = '/dataset'
@@ -21,9 +21,9 @@ def build_or_load_index(dataset_name='cranfield', num_docs=None):
         for i, doc in enumerate(dataset.docs_iter()):
             if num_docs is not None and i >= num_docs:
                 break
-            processed_text = preprocess(doc.text)  # Access 'text' attribute directly
+            processed_text = preprocess(doc.text) 
             processed_texts.append(processed_text)
-        print(processed_texts[0])
+
         document_vectors = vectorizer.fit_transform(processed_texts)
         joblib.dump(vectorizer, vectorizer_path)
         joblib.dump(document_vectors, document_vectors_path)
@@ -37,6 +37,6 @@ def load_data(dataset_name='cranfield', num_docs=None):
     for i, doc in enumerate(dataset.docs_iter()):
         if num_docs is not None and i >= num_docs:
             break
-        documents.append(doc.text)  # Access 'text' attribute directly
+        documents.append(doc.text) 
     
     return documents
