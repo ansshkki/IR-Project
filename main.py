@@ -16,6 +16,7 @@ search_engine = SearchEngine()
 @app.get("/search")
 def search(dataset_name: str, query: str, num_docs: int = 100, top_n: int = 6):
     if(dataset_name == "wikir") : dataset_name = "wikir/en1k/training"
+    if(dataset_name == "lotte") : dataset_name = "lotte/recreation/dev/forum"
     results = search_engine.google_search_engine(dataset_name, query, num_docs, top_n)
     return results
 
