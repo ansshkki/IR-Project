@@ -48,13 +48,14 @@ class SearchEngine:
         top_documents = [documents[index] for index in ranked_indices[:top_n]]
         results = [(top_documents[i], similarity_scores[i]) for i in range(top_n)]
         
-        # # Optional: Topic Detection on top documents
-        # lda_model, lda_vectorizer = detect_topics(top_documents)
-        # top_words = print_top_words(lda_model, lda_vectorizer.get_feature_names_out(), 20)
+        # Optional: Topic Detection on top documents
+        lda_model, lda_vectorizer = detect_topics(top_documents)
+        top_words = print_top_words(lda_model, lda_vectorizer.get_feature_names_out(), 20)
+        print(f" top words Topic Detection{top_words}")
         
         return {
             "results": [{"document": doc, "score": score} for doc, score in results],
-            # "topics": top_words
+             "topics": top_words
         }
 
 
