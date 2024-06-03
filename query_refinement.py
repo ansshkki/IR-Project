@@ -16,6 +16,11 @@ def expand_query(query):
     return ' '.join(set(expanded_tokens))
 
 
+# Example
+# expand_query("good")
+# output unspoilt ripe adept safe commodity trade_good near just respectable skilful dependable upright undecomposed effective expert unspoiled full right in_effect thoroughly soundly serious secure sound well salutary in_force good beneficial proficient goodness estimable dear practiced honorable honest skillful
+
+
 
 
 # Query Refinement (Query Formulation Assistance, Query Suggestions)

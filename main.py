@@ -22,3 +22,6 @@ def search(dataset_name: str, query: str, num_docs: int = 100, top_n: int = 6):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+# search_engine = SearchEngine()
+# search_engine.google_search_engine("wikir/en1k/training", "durabl good typic character long period", 10000, 5)
