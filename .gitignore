@@ -145,3 +145,4 @@ env/
 # Other
 *.swp
 wikir_*
+docs.joblib_*
